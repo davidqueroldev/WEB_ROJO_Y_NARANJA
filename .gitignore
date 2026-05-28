@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pyd
+*.egg-info/
+env/
+venv/
+.venv/
+build/
+dist/
+.pytest_cache/
+migrations/__pycache__/
+.python-version
+.coverage
+
+# Node
+node_modules/
+frontend/node_modules/
+public/node_modules/
+frontend/build/
+build/
+
+# dotenv
+.env
+.env.local
+.env.*.local
+
+# VSCode
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Misc
+.cache/
+/.idea/

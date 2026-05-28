@@ -1,0 +1,27 @@
+# /etc/systemd/system/rojoynaranja.service
+# Enable:  sudo systemctl enable rojoynaranja
+# Start:   sudo systemctl start rojoynaranja
+# Status:  sudo systemctl status rojoynaranja
+# Logs:    journalctl -fu rojoynaranja
+
+[Unit]
+Description=Rojo y Naranja — Flask/Gunicorn
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/rojoynaranja/backend
+Environment="PATH=/var/www/rojoynaranja/venv/bin"
+EnvironmentFile=/var/www/rojoynaranja/backend/.env
+ExecStart=/var/www/rojoynaranja/venv/bin/gunicorn -c /var/www/rojoynaranja/deploy/gunicorn.conf.py wsgi:app
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
